@@ -1,0 +1,151 @@
+:root{
+  --bg-primary: rgba(0, 0, 0, 0.69);
+  --bg--secondary: rgba(236, 116, 236, 0.629);
+  --border: rgba(241, 59, 59, 0.721) ;
+}
+
+body{
+position: relative;
+background-color: var(--bg-primary);
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
+body::after{
+    content: '';
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    opacity: 0.5;
+    z-index: -1;
+    background-color: var(--bg--secondary) ;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+
+}
+body::before{
+    content: '';
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    opacity: 0.5;
+    z-index: -1;
+    background-color: var(--bg--secondary) ;
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+
+}
+
+
+.container{
+    height: 70vh;
+    width: 50%;
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+
+}
+
+.display{
+    height: 100px;
+    width: 90%;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background-color: black;
+    color: whitesmoke;
+    font-size: 50px;
+    font-weight: bold;
+    position: absolute;
+    top:50px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+    
+}
+
+.inputs{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+   margin-bottom: 15px;
+    
+
+}
+
+.inputs input{
+    height: 50px;
+    width:70px ;
+    background-color: black;
+    color: whitesmoke;
+    font-size: 30px;
+    font-weight: bold;
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    text-align: center;
+    outline: none;
+}
+.inputs input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+{
+   -webkit-appearance: none;
+   margin: 0;
+}
+.inputs button{
+    height: 50px;
+    width: 100px;
+    border: 2px solid var(--border);
+    background-color: black;
+    color: whitesmoke;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.inputs button:hover{
+    background-color: whitesmoke;
+    color: black;
+}
+
+
+
+.commands{
+  position: absolute;
+  bottom: 0px;
+  height: 200px;
+  width: 100%;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+ 
+}
+
+.commands i{
+    font-size: 30px;
+    color: whitesmoke;
+    background-color: black;
+    height: 60px ;
+    width: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s all;
+   
+
+}
+
+.commands i:hover{
+    background-color: whitesmoke;
+    color: black;
+}
