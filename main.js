@@ -4,11 +4,13 @@ let addTimer = document.querySelector('#addTimer');
 let pauseInput = document.querySelector('#pauseInput');
 let playInput = document.querySelector('#playInput');
 let stopInput = document.querySelector('#stopInput');
-let interval; 
-
+let time ;
+let rimaningTime;
+let pause = true
  
-function countDown() {
-  let time = parseInt(display.innerHTML); 
+function countDown( ) {
+   time = parseInt(display.innerHTML); 
+
    interval = setInterval(function() {
     document.getElementById('display').innerHTML = time +' s'; 
     if (time <= 0) {
@@ -16,41 +18,59 @@ function countDown() {
       display.innerHTML = 'TEMPO FINITO'
       
     }else{
-      time--; 
+      rimaningTime = time 
+      time--;
     }
   }, 1000); 
-  }
+}
 function pausa(){
+   
+     pause = true
     clearInterval(interval)
-    pause = true
+   }
+  
+
+  function play() {
+  pause = false 
+  time = rimaningTime
+  countDown()
+    
   }
 
+ 
   function stop (){
     clearInterval(interval)
     display.innerHTML = '00 s'
   }
-
-
-
-
-
-
-
-
-addTimer.addEventListener('click',  () => {
-  display.innerHTML = secondsInput.value + ' s';
-   secondsInput.value = ''
-}) 
-playInput.addEventListener('click', ()=>{
-  let time = parseInt(display.innerHTML)
-   countDown(time);
-  secondsInput.value = ''
   
-})
+  
+  
+  
+  
+  
+  
+  
+  addTimer.addEventListener('click',  () => {
+  display.innerHTML = secondsInput.value + ' s';
+if( display.innerHTML ){
+  countDown()
+  secondsInput.value = ''
+
+}
+
+}) 
 
 pauseInput.addEventListener('click', () => {
-  pausa();  
+ if( rimaningTime > 0){
+  pause = true
+  pausa() 
+ }
 });
+
+playInput.addEventListener('click', ()=>{
+  pause = false
+  play()
+})
 
 stopInput.addEventListener('click', () => {
   
