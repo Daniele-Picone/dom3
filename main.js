@@ -6,6 +6,7 @@ let playInput = document.querySelector('#playInput');
 let stopInput = document.querySelector('#stopInput');
 let time ;
 let rimaningTime;
+let interval ;
 let pause = true
  
 function countDown( ) {
@@ -40,7 +41,9 @@ function pausa(){
  
   function stop (){
     clearInterval(interval)
-    display.innerHTML = '00 s'
+    time = '--'
+    rimaningTime = '--'
+    display.innerHTML = '-- s'
   }
   
   
