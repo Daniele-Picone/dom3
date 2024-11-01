@@ -1,85 +1,48 @@
 let display = document.querySelector('#display');
 let secondsInput = document.querySelector('#secondsInput');
-let addTimer = document.querySelector('#addTimer');
-let pauseInput = document.querySelector('#pauseInput');
+let pauseInput = document.querySelector('#pauseInput')
 let playInput = document.querySelector('#playInput');
 let stopInput = document.querySelector('#stopInput');
+
+
 let time ;
-let rimaningTime;
-let interval ;
-let pause = true
+let interval;
+let rimaningTime = 0
  
-function countDown( ) {
-   time = parseInt(display.innerHTML); 
+playInput.addEventListener('click', () => {
+  clearInterval(interval)
+  time = secondsInput.value ;
 
-   interval = setInterval(function() {
-    document.getElementById('display').innerHTML = time +' s'; 
-    if (time <= 0) {
-      clearInterval(interval);
-      display.innerHTML = 'TEMPO FINITO'
-      
+  if (rimaningTime != 0){
+    time =rimaningTime
+  }
+  interval = setInterval(() => {
+    if (time <  0){
+      clearInterval(interval)
+      display.innerHTML= 'tempo scaduto'
     }else{
-      rimaningTime = time 
-      time--;
+     secondsInput.value = ''
+      display.innerHTML= time + ' s'
+      time--
+
     }
-  }, 1000); 
-}
-function pausa(){
-   
-     pause = true
-    clearInterval(interval)
-   }
-  
-
-  function play() {
-  pause = false 
-  time = rimaningTime
-  countDown()
-    
-  }
-
- 
-  function stop (){
-    clearInterval(interval)
-    time = '--'
-    rimaningTime = '--'
-    display.innerHTML = '-- s'
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-  addTimer.addEventListener('click',  () => {
-  display.innerHTML = secondsInput.value + ' s';
-if( display.innerHTML ){
-  countDown()
-  secondsInput.value = ''
-
-}
-
-}) 
+  },1000)
+})
 
 pauseInput.addEventListener('click', () => {
- if( rimaningTime > 0){
-  pause = true
-  pausa() 
- }
-});
-
-playInput.addEventListener('click', ()=>{
-  pause = false
-  play()
+  clearInterval(interval)
+  rimaningTime = time
 })
+
 
 stopInput.addEventListener('click', () => {
-  
-  stop()
+  clearInterval(interval)
+ 
+  display.innerHTML = '-- s'
+  })
 
-})
+
+
 
 
 
